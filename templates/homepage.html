@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Marketplace do Jorge</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <h1>Produtos disponíveis</h1>
+
+    <div class="container">
+        {% for p in produtos %}
+            <div class="produto">
+                <h2>{{ p[1] }}</h2> <!-- nome_produto -->
+                <p>Preço: R$ {{ "%.2f"|format(p[2]) }}</p> <!-- preco -->
+                <p>Estoque: {{ p[3] }}</p> <!-- estoque -->
+                <a href="{{ url_for('main.comprar', produto_id=p[0]) }}" class="btn">Comprar</a> <!-- id -->
+            </div>
+        {% endfor %}
+    </div>
+</body>
+</html>
